@@ -1,0 +1,46 @@
+spring:
+  ##
+  ## DATABASE(POSTGRESQL)
+  ##
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/kursishidb
+    username: postgres
+    password: 12345
+
+  ##
+  ## JPA CONFIGURATION
+  ##
+  jpa:
+    open-in-view: 'false'
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      mode: never
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+  messages:
+    basename: messages
+    encoding: UTF-8
+  web:
+    locale: uz
+
+server:
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain,application/javascript,text/css
+  port: '8080'
+host:
+  name: localhost:8080
+
+jwt:
+  public:
+    key: classpath:app.pub
+  private:
+    key: classpath:app.key
+  expiration:
+    time: 36_000_000
